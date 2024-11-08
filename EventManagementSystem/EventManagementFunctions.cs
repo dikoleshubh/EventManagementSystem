@@ -1,21 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EventManagementSystem
 {
 
     public class EventManager
     {
-        private Dictionary<int, Event> events = new Dictionary<int, Event>();
+        private Dictionary<int, EventEntity> events = new Dictionary<int, EventEntity>();
 
         private int nextId = 0;
 
-        public Event CreateEvent(string name, string description, DateTime date, string location)
+        public EventEntity CreateEvent(string name, string description, DateTime date, string location)
         {
-            var newEvent = new Event(nextId++, name, description, date, location);
+            var newEvent = new EventEntity(nextId++, name, description, date, location);
             events.Add(newEvent.Id, newEvent);
             return newEvent;
         }
@@ -25,20 +22,20 @@ namespace EventManagementSystem
             return events.Remove(id);
         }
 
-        public Event GetEvent(int id)
+        public EventEntity GetEvent(int id)
         {
-            events.TryGetValue(id, out Event evnt);
+            events.TryGetValue(id, out EventEntity evnt);
             return evnt;
         }
 
-        public List<Event> ListEvents()
+        public List<EventEntity> ListEvents()
         {
-            return new List<Event>(events.Values);
+            return new List<EventEntity>(events.Values);
         }
 
         public bool UpdateEvent(int id, string name, string description, DateTime? date, string location)
         {
-            if (events.TryGetValue(id, out Event evnt))
+            if (events.TryGetValue(id, out EventEntity evnt))
             {
                 if (!string.IsNullOrEmpty(name)) evnt.Name = name;
                 if (!string.IsNullOrEmpty(description)) evnt.Description = description;

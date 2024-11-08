@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EventManagementEntity.cs" />
+    <Compile Include="EventManagementMethod.cs" />
+    <Compile Include="EventManagementFunctions.cs" />
+    <Compile Include="EventManagmentEntity.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
